@@ -11,12 +11,20 @@
 @implementation NSMutableArray(Shuffle)
 
 - (void)shuffle {
-    for (int i=0; i<self.count; i++) {
+    if (self.count < 2) {
+        return;
+    }
+    
+    for (NSInteger i=0; i<self.count; i++) {
         [self swapObjectAtIndex:i];
     }
 }
 
 - (void)shuffleWithGuaranteedDifferent {
+    if (self.count < 2) {
+        return;
+    }
+    
     NSArray *originalArray = [self copy];
     [self shuffle];
     

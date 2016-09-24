@@ -26,6 +26,11 @@ typedef void (^UIViewAnimationCompletionBlock)(BOOL finished);
 - (void)removeMaskWithAnimationDuration:(NSTimeInterval)duration maskArray:(NSArray <UIView *>*)maskViews;
 
 
+/**
+ * Returns a translucent dark grey colour.
+ *
+ * @return [UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:0.5];
+ */
 - (UIColor *)defaultMaskColor;
 
 @end

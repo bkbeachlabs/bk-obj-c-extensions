@@ -43,7 +43,7 @@
 /*
  * Returns a list of the supported orientations in the most recent viewController.
  */
-- (NSUInteger)supportedInterfaceOrientations {
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
     return [[self.viewControllers lastObject] supportedInterfaceOrientations];
 }
 

@@ -18,11 +18,14 @@
 
 /**
  * Performs a naive swap shuffle of the inputted array.
+ * If this array has 0 or 1 elements, this does nothing.
  */
 - (void)shuffle;
 
 /**
  * Performs a swap shuffle, but guarantees that none of the objects are in the same place as before.
+ * If this array has 0 or 1 elements, this does nothing. Arrays that contain many identical elements may result in unexpected behaviour.
+ *
  */
 - (void)shuffleWithGuaranteedDifferent;
 

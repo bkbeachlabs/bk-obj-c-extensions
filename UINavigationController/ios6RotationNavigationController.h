@@ -21,16 +21,16 @@
  * it to forward the result of its own shouldAutorotate
  * @return TRUE if the view should autorotate, FALSE otherwise.
  */
-- (BOOL) shouldAutorotate;
+- (BOOL)shouldAutorotate;
 
 /**
  * @return a list of the supported orientations in the most recent viewController.
  */
-- (NSUInteger) supportedInterfaceOrientations;
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations;
 
 /**
  * @return the preferred interface orientation of the most recent viewController.
  */
-- (UIInterfaceOrientation) preferredInterfaceOrientationForPresentation;
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation;
 
 @end

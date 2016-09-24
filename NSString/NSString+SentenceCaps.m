@@ -10,8 +10,6 @@
 
 @implementation NSString (SentenceCaps)
 
-
-
 - (NSString *)sentenceCapitalizedString {
     if (![self length]) {
         return [NSString string];
@@ -22,12 +20,21 @@
 }
 
 - (NSString *)realSentenceCapitalizedString {
-    __block NSMutableString *mutableSelf = [NSMutableString stringWithString:self];
-    [self enumerateSubstringsInRange:NSMakeRange(0, [self length])
-                             options:NSStringEnumerationBySentences
-                          usingBlock:^(NSString *sentence, NSRange sentenceRange, NSRange enclosingRange, BOOL *stop) {
-                              [mutableSelf replaceCharactersInRange:sentenceRange withString:[sentence sentenceCapitalizedString]];
-                          }];
-    return [NSString stringWithString:mutableSelf]; // or just return mutableSelf.
+    NSMutableString *resultString = [@"" mutableCopy];
+    
+    NSScanner *scanner = [NSScanner scannerWithString:self];
+    while (!scanner.isAtEnd) {
+        NSString *nextSentence;
+        [scanner scanUpToCharactersFromSet:[NSCharacterSet characterSetWithCharactersInString:@".?!"] intoString:&nextSentence];
+        [resultString appendString:[nextSentence sentenceCapitalizedString]];
+        
+        if (!scanner.isAtEnd) {
+            NSString *nextEnding;
+            [scanner scanCharactersFromSet:[NSCharacterSet characterSetWithCharactersInString:@".?! "] intoString:&nextEnding];
+            [resultString appendString:nextEnding];
+        }
+    }
+    return [NSString stringWithString:resultString];
 }
+
 @end
